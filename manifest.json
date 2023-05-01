@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Hello Extensions",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "hello_.png"
+    },
+    "permissions": ["activeTab", "storage", "tts"],
+    "commands": {
+        "speak_selected_text": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+S"
+          },
+          "description": "Speak selected text"
+        },
+        "stop_speaking": {
+            "suggested_key": {
+              "default": "Ctrl+Shift+X"
+            },
+            "description": "Stop speaking"
+          }
+      },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
+        }
+      ],
+    "background": {
+        "service_worker": "background.js"
+    }
+  }
